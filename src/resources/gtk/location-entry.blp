@@ -148,6 +148,7 @@ template $EphyLocationEntry: Box {
                       single-line-mode: true;
                       hexpand: true;
                       label: bind template.item as <$EphySuggestion>.subtitle;
+                      visible: bind $suggestion_has_subtitle(template.item as <$EphySuggestion>.subtitle);
 
                       layout {
                         column: "1";

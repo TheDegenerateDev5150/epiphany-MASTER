@@ -580,10 +580,12 @@ on_suggestions_downloaded_cb (SoupSession  *session,
      * the search engine, and the second one is the name of the search engine
      * from which the suggestions are coming.
      */
-    unescaped_title = g_strdup_printf ("%s — %s", suggestion_term, ephy_search_engine_get_name (engine));
+    unescaped_title = g_strdup_printf ("%s — %s Search Suggestion",
+                                       suggestion_term,
+                                       ephy_search_engine_get_name (engine));
     escaped_title = g_markup_escape_text (unescaped_title, -1);
     suggestion_address = ephy_search_engine_build_search_address (engine, suggestion_term);
-    suggestion = ephy_suggestion_new (escaped_title, unescaped_title, suggestion_address, FALSE);
+    suggestion = ephy_suggestion_new_without_subtitle (escaped_title, unescaped_title, suggestion_address);
 
     ephy_suggestion_set_icon (suggestion, "ephy-loupe-plus-symbolic");
 

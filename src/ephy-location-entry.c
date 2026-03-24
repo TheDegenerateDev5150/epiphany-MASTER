@@ -232,6 +232,13 @@ schedule_dns_prefetch (EphyLocationEntry *self,
   g_proxy_resolver_lookup_async (resolver, url, NULL, proxy_resolver_ready_cb, helper);
 }
 
+static gboolean
+suggestion_has_subtitle (EphyLocationEntry *self,
+                         const char        *subtitle)
+{
+  return subtitle && subtitle[0];
+}
+
 static void
 set_selected_suggestion_as_url (EphyLocationEntry *self)
 {
@@ -252,8 +259,14 @@ set_selected_suggestion_as_url (EphyLocationEntry *self)
   } else {
     if (ephy_suggestion_is_completion (EPHY_SUGGESTION (suggestion))) {
       ephy_location_entry_set_text (self, ephy_suggestion_get_unescaped_title (EPHY_SUGGESTION (suggestion)));
-    } else {
+    } else if (suggestion_has_subtitle (self, dzl_suggestion_get_subtitle (suggestion))) {
       ephy_location_entry_set_text (self, dzl_suggestion_get_subtitle (suggestion));
+    } else {
+      const char *uri = ephy_suggestion_get_uri (EPHY_SUGGESTION (suggestion));
+      g_autofree char *decoded_uri = ephy_uri_decode (uri);
+      g_autofree char *escaped_uri = g_markup_escape_text (decoded_uri, -1);
+
+      ephy_location_entry_set_text (self, escaped_uri);
     }
   }
   gtk_editable_set_position (GTK_EDITABLE (self), -1);
@@ -1221,6 +1234,7 @@ ephy_location_entry_class_init (EphyLocationEntryClass *klass)
   gtk_widget_class_bind_template_callback (widget_class, update_suggestions_popover);
   gtk_widget_class_bind_template_callback (widget_class, middle_click_pressed_cb);
   gtk_widget_class_bind_template_callback (widget_class, middle_click_released_cb);
+  gtk_widget_class_bind_template_callback (widget_class, suggestion_has_subtitle);
 
   gtk_widget_class_install_action (widget_class, "clipboard.paste-and-go", NULL, (GtkWidgetActionActivateFunc)paste_and_go_activate);
 
