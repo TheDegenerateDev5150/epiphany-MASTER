@@ -22,7 +22,6 @@
 
 #include "ephy-debug.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-profile-utils.h"
 #include "ephy-settings.h"
 #include "ephy-string.h"
@@ -63,7 +62,7 @@ migrate_pre_flatpak_webapps (void)
   g_autofree char *portal_icon_dir = NULL;
 
   /* This migration is both not needed and not possible from within Flatpak. */
-  if (ephy_is_running_inside_sandbox ())
+  if (xdp_portal_running_under_sandbox ())
     return;
 
   portal_desktop_dir = g_build_filename (g_get_user_data_dir (), "xdg-desktop-portal", "applications", NULL);

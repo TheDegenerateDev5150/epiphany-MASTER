@@ -23,7 +23,6 @@
 #include "ephy-web-process-extension.h"
 #include "ephy-debug.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-settings.h"
 
 #pragma GCC diagnostic push
@@ -50,7 +49,6 @@ webkit_web_process_extension_initialize_with_user_data (WebKitWebProcessExtensio
 
   ephy_debug_init ();
 
-  ephy_flatpak_utils_set_is_web_process_extension ();
   ephy_settings_set_is_web_process_extension ();
 
   extension = ephy_web_process_extension_get ();

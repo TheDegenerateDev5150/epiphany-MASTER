@@ -593,7 +593,7 @@ ephy_web_application_get_tmp_icon_path (const char  *desktop_path,
   /* This function is only useful inside the sandbox since the icon file on the
    * host is inaccessible in that case.
    */
-  g_assert (ephy_is_running_inside_sandbox ());
+  g_assert (xdp_portal_running_under_sandbox ());
 
   desktop_basename = g_path_get_basename (desktop_path);
   icon_v = xdp_portal_dynamic_launcher_get_icon (portal, desktop_basename, &icon_format, NULL, error);
@@ -673,7 +673,7 @@ ephy_web_application_for_profile_directory (const char            *profile_dir,
     app->name = g_key_file_get_string (key_file, "Desktop Entry", "Name", NULL);
     app->icon_path = g_key_file_get_string (key_file, "Desktop Entry", "Icon", NULL);
 
-    if (ephy_is_running_inside_sandbox () && need_tmp_icon == EPHY_WEB_APP_NEED_TMP_ICON) {
+    if (xdp_portal_running_under_sandbox () && need_tmp_icon == EPHY_WEB_APP_NEED_TMP_ICON) {
       app->tmp_icon_path = ephy_web_application_get_tmp_icon_path (app->desktop_path, &error);
       if (!app->tmp_icon_path)
         g_warning ("Failed to get tmp icon path for app %s: %s", app->id, error->message);
@@ -692,7 +692,7 @@ ephy_web_application_for_profile_directory (const char            *profile_dir,
   }
 
   /* sandbox should take the code path above */
-  if (ephy_is_running_inside_sandbox ()) {
+  if (xdp_portal_running_under_sandbox ()) {
     g_warning ("Epiphany is sandboxed but the DynamicLauncher portal is unavailable; can't use web app functionality");
     return NULL;
   }
@@ -990,7 +990,7 @@ ephy_web_application_save (EphyWebApplication *app)
   gboolean saved = FALSE;
   g_autoptr (GError) error = NULL;
 
-  g_assert (!ephy_is_running_inside_sandbox ());
+  g_assert (!xdp_portal_running_under_sandbox ());
 
   if (!g_file_get_contents (app->desktop_path, &contents, NULL, &error)) {
     g_warning ("Failed to load desktop file of web application: %s", error->message);

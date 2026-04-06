@@ -24,6 +24,8 @@
 #include "ephy-embed-shell.h"
 #include "ephy-flatpak-utils.h"
 
+#include <libportal/portal-helpers.h>
+
 struct _EphyPageMenuButton {
   AdwBin parent_instance;
 
@@ -129,7 +131,7 @@ ephy_page_menu_button_init (EphyPageMenuButton *self)
   if (is_desktop_pantheon ()) {
     remove_menu_item (self->page_menu, "app.about");
 
-    if (ephy_is_running_inside_sandbox ())
+    if (xdp_portal_running_under_sandbox ())
       remove_menu_item (self->page_menu, "app.help");
 
     gtk_menu_button_set_icon_name (GTK_MENU_BUTTON (self->menu_button), "open-menu");

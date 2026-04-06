@@ -21,7 +21,6 @@
 #include "config.h"
 #include "ephy-debug.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-settings.h"
 
 #include <glib.h>
@@ -76,7 +75,7 @@ static void
 test_ephy_file_get_downloads_dir (void)
 {
   guint i;
-  gboolean in_sandbox = ephy_is_running_inside_sandbox ();
+  gboolean in_sandbox = xdp_portal_running_under_sandbox ();
 
   ephy_file_helpers_init (NULL, EPHY_FILE_HELPERS_PRIVATE_PROFILE, NULL);
 
@@ -306,7 +305,7 @@ main (int   argc,
   g_test_add_func ("/lib/ephy-file-helpers/get_downloads_dir",
                    test_ephy_file_get_downloads_dir);
 
-  if (!ephy_is_running_inside_sandbox ())
+  if (!xdp_portal_running_under_sandbox ())
     g_test_add_func ("/lib/ephy-file-helpers/create_delete_dir",
                      test_ephy_file_create_delete_dir);
 

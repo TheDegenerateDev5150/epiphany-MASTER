@@ -26,7 +26,6 @@
 #include "ephy-embed-shell.h"
 #include "ephy-embed-type-builtins.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-prefs.h"
 #include "ephy-settings.h"
 #include "ephy-string.h"
@@ -894,7 +893,7 @@ download_decide_destination_cb (WebKitDownload *wk_download,
   if (will_provide_destination)
     return TRUE;
 
-  if (!ephy_is_running_inside_sandbox () &&
+  if (!xdp_portal_running_under_sandbox () &&
       (g_settings_get_boolean (EPHY_SETTINGS_WEB, EPHY_PREFS_WEB_ASK_ON_DOWNLOAD) ||
        download->always_ask_destination)) {
     open_download_confirmation_dialog (download, suggested_filename);

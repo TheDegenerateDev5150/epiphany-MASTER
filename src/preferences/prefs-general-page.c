@@ -25,7 +25,6 @@
 
 #include "ephy-embed-shell.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-header-bar.h"
 #include "ephy-lang-row.h"
 #include "ephy-langs.h"
@@ -1168,7 +1167,7 @@ setup_general_page (PrefsGeneralPage *general_page)
   /* ========================== Web Application ============================= */
   /* ======================================================================== */
   EphyWebApplication *webapp = ephy_shell_get_webapp (ephy_shell_get_default ());
-  if (webapp && !ephy_is_running_inside_sandbox () && !g_settings_get_boolean (EPHY_SETTINGS_WEB_APP, EPHY_PREFS_WEB_APP_SYSTEM)) {
+  if (webapp && !xdp_portal_running_under_sandbox () && !g_settings_get_boolean (EPHY_SETTINGS_WEB_APP, EPHY_PREFS_WEB_APP_SYSTEM)) {
     prefs_general_page_update_webapp_icon (general_page, webapp->icon_path);
     gtk_editable_set_text (GTK_EDITABLE (general_page->webapp_url_row), webapp->url);
     gtk_editable_set_text (GTK_EDITABLE (general_page->webapp_title_row), webapp->name);
@@ -1247,7 +1246,7 @@ setup_general_page (PrefsGeneralPage *general_page)
   /* ======================================================================== */
   /* ========================== Downloads =================================== */
   /* ======================================================================== */
-  if (ephy_is_running_inside_sandbox ())
+  if (xdp_portal_running_under_sandbox ())
     gtk_widget_set_visible (general_page->download_box, FALSE);
   else
     g_settings_bind_with_mapping (EPHY_SETTINGS_STATE,
@@ -1370,9 +1369,9 @@ prefs_general_page_init (PrefsGeneralPage *general_page)
                           mode == EPHY_EMBED_SHELL_MODE_APPLICATION &&
                           !g_settings_get_boolean (EPHY_SETTINGS_WEB_APP,
                                                    EPHY_PREFS_WEB_APP_SYSTEM));
-  gtk_widget_set_visible (general_page->webapp_icon_row, !ephy_is_running_inside_sandbox ());
-  gtk_widget_set_visible (general_page->webapp_url_row, !ephy_is_running_inside_sandbox ());
-  gtk_widget_set_visible (general_page->webapp_title_row, !ephy_is_running_inside_sandbox ());
+  gtk_widget_set_visible (general_page->webapp_icon_row, !xdp_portal_running_under_sandbox ());
+  gtk_widget_set_visible (general_page->webapp_url_row, !xdp_portal_running_under_sandbox ());
+  gtk_widget_set_visible (general_page->webapp_title_row, !xdp_portal_running_under_sandbox ());
   gtk_widget_set_visible (general_page->default_search_engines,
                           mode != EPHY_EMBED_SHELL_MODE_APPLICATION);
   gtk_widget_set_visible (general_page->homepage_box,

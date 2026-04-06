@@ -25,7 +25,6 @@
 #include "ephy-embed-prefs.h"
 #include "ephy-embed-utils.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-history-service.h"
 #include "ephy-output-encoding.h"
 #include "ephy-prefs.h"
@@ -296,7 +295,7 @@ handle_applications_finished_cb (EphyAboutHandler       *handler,
       g_date_strftime (install_date, 127, "%x", date);
 
       /* In the sandbox we don't have access to the host side icon file */
-      if (ephy_is_running_inside_sandbox ())
+      if (xdp_portal_running_under_sandbox ())
         icon_path = app->tmp_icon_path;
       else
         icon_path = app->icon_path;

@@ -143,7 +143,7 @@ ephy_file_get_downloads_dir (void)
   g_autofree char *download_dir = g_settings_get_string (EPHY_SETTINGS_STATE,
                                                          EPHY_PREFS_STATE_DOWNLOAD_DIR);
 
-  if (ephy_is_running_inside_sandbox ())
+  if (xdp_portal_running_under_sandbox ())
     return ephy_file_download_dir ();
 
   if (g_strcmp0 (download_dir, "Desktop") == 0)
@@ -628,7 +628,7 @@ ephy_file_launch_uri_handler (GFile                        *file,
    * other way to open a file when sandboxed, and focus stealing prevention
    * becomes the responsibility of the portal in this case anyway.
    */
-  if (ephy_is_running_inside_sandbox ()) {
+  if (xdp_portal_running_under_sandbox ()) {
     g_autofree char *uri = g_file_get_uri (file);
     EphyOpenUriFlags openUriFlags = EPHY_OPEN_URI_FLAGS_NONE;
 

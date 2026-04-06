@@ -25,7 +25,6 @@
 #include "ephy-debug.h"
 #include "ephy-embed-utils.h"
 #include "ephy-file-helpers.h"
-#include "ephy-flatpak-utils.h"
 #include "ephy-profile-utils.h"
 #include "ephy-session.h"
 #include "ephy-settings.h"
@@ -312,7 +311,7 @@ main (int   argc,
 
   if (application_mode && !profile_directory) {
     if (desktop_file_basename) {
-      if (ephy_is_running_inside_sandbox ()) {
+      if (xdp_portal_running_under_sandbox ()) {
         g_print ("In sandbox, no desktop file can be passed to --application-mode\n");
         goto out;
       } else {
