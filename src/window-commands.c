@@ -2002,19 +2002,23 @@ static void
 send_web_app_install_notification (EphyApplicationDialogData *data,
                                    GError                    *error)
 {
+  const char *name = data->chosen_name ? data->chosen_name : data->title;
   g_autofree char *message = NULL;
-  GNotification *notification;
+  g_autoptr (GNotification) notification = NULL;
 
   if (!error) {
-    message = g_strdup_printf (_("The application “%s” is ready to be used"),
-                               data->chosen_name);
+    message = g_strdup_printf (_("The app “%s” is ready to be used"),
+                               name);
   } else {
-    message = g_strdup_printf (_("The application “%s” could not be created: %s"),
-                               data->chosen_name, error->message);
-    g_warning ("The application “%s” could not be created: %s", data->chosen_name, error->message);
+    message = g_strdup_printf (_("The app “%s” could not be created"),
+                               name);
+    g_dbus_error_strip_remote_error (error);
+    g_warning ("The app “%s” could not be created: %s", name, error->message);
   }
 
   notification = g_notification_new (message);
+  if (error)
+    g_notification_set_body (notification, error->message);
 
   if (data->framed_pixbuf)
     g_notification_set_icon (notification, G_ICON (data->framed_pixbuf));
@@ -2025,9 +2029,9 @@ send_web_app_install_notification (EphyApplicationDialogData *data,
     g_notification_set_default_action_and_target (notification, "app.launch-app", "s", data->app_id);
   }
 
-  g_notification_set_priority (notification, G_NOTIFICATION_PRIORITY_LOW);
+  g_notification_set_priority (notification, error ? G_NOTIFICATION_PRIORITY_NORMAL : G_NOTIFICATION_PRIORITY_LOW);
 
-  g_application_send_notification (G_APPLICATION (g_application_get_default ()), data->chosen_name, notification);
+  g_application_send_notification (G_APPLICATION (g_application_get_default ()), name, notification);
 }
 
 static void
