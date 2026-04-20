@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: epiphany gnome-47\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/epiphany/issues/\n"
-"POT-Creation-Date: 2026-04-06 13:25+0000\n"
-"PO-Revision-Date: 2026-04-14 21:06+0200\n"
+"POT-Creation-Date: 2026-04-14 19:31+0000\n"
+"PO-Revision-Date: 2026-04-20 15:24+0200\n"
 "Last-Translator: Peter Mráz <etkinator@gmail.com>\n"
 "Language-Team: slovenčina <>\n"
 "Language: sk\n"
@@ -313,14 +313,14 @@ msgstr "Použiť nastavenia písma GNOME."
 
 #: data/org.gnome.epiphany.gschema.xml:148
 msgid "Custom sans-serif font"
-msgstr "Vlastné písmo  sans-serif"
+msgstr "Vlastné písmo sans-serif"
 
 #: data/org.gnome.epiphany.gschema.xml:149
 msgid ""
 "A value to be used to override sans-serif desktop font when use-gnome-fonts "
 "is set."
 msgstr ""
-"Hodnota na prepísanie písma  sans-serif  pracovnej plochy, keď je nastavené "
+"Hodnota na prepísanie písma  sans-serif pracovnej plochy, keď je nastavené "
 "use-gnome-fonts."
 
 #: data/org.gnome.epiphany.gschema.xml:153
@@ -416,14 +416,14 @@ msgstr "Skryje lišty cookie."
 
 #: data/org.gnome.epiphany.gschema.xml:198
 msgid "User agent"
-msgstr "Užívateľský agent"
+msgstr "Používateľský agent"
 
 #: data/org.gnome.epiphany.gschema.xml:199
 msgid ""
 "String that will be used as user agent, to identify the browser to the web "
 "servers."
 msgstr ""
-"Reťazec, ktorý sa použije ako užívateľský agent na identifikáciu prehliadača "
+"Reťazec, ktorý sa použije ako používateľský agent na identifikáciu prehliadača "
 "na webových serveroch."
 
 #: data/org.gnome.epiphany.gschema.xml:203
@@ -508,9 +508,9 @@ msgid ""
 "everything will be loaded as a URL unless a search engine is explicitly "
 "selected from the dropdown menu."
 msgstr ""
-"Či automaticky hľadať na webe, keď niečo, čo nevyzerá ako URL, je zadané do "
-"adresného riadku. Ak je toto nastavenie vypnuté, všetko sa načíta ako URL, "
-"pokým nebude explicitne vybraný vyhľadávač z rozbaľovacieho menu."
+"Či automaticky hľadať na webe, keď niečo, čo nevyzerá ako adresa URL, zadáte do "
+"adresného riadku. Ak je toto nastavenie vypnuté, všetko sa načíta ako adresa URL, "
+"pokiaľ explicitne nevyberiete vyhľadávač z rozbaľovacej ponuky."
 
 #: data/org.gnome.epiphany.gschema.xml:247
 msgid "Enable mouse gestures"
@@ -609,7 +609,7 @@ msgid ""
 "Whether to show developer context menu actions. This allows use of the Page "
 "Source and Inspect Element actions."
 msgstr ""
-"Či zobraziť akcie kontextového menu pre vývojárov. Toto umožňuje použitie "
+"Či zobraziť akcie kontextovej ponuky pre vývojárov. Toto umožňuje použitie "
 "akcií Zobraziť zdroj stránky a Skontrolovať prvok."
 
 #: data/org.gnome.epiphany.gschema.xml:297
@@ -666,7 +666,7 @@ msgstr "Ak je povolené, aplikáciu nie je možné upravovať ani odstraňovať.
 
 #: data/org.gnome.epiphany.gschema.xml:331
 msgid "The downloads folder"
-msgstr "Adresár na stiahnuté súbory"
+msgstr "Adresár pre stiahnuté súbory"
 
 #: data/org.gnome.epiphany.gschema.xml:332
 msgid ""
@@ -750,8 +750,8 @@ msgid ""
 "The email linked to the Mozilla account used to sync data with Mozilla’s "
 "servers."
 msgstr ""
-"Email priradený k účtu Mozilla používanému na synchronizáciu údajov so servermi "
-"Mozilla."
+"Email priradený k účtu Mozilla používanému na synchronizáciu údajov so "
+"servermi Mozilla."
 
 #: data/org.gnome.epiphany.gschema.xml:399
 msgid "Last sync timestamp"
@@ -1285,7 +1285,7 @@ msgstr "Sťahovanie dokončené"
 #: embed/ephy-embed.c:566
 #, c-format
 msgid "Press %s to exit fullscreen"
-msgstr "Stlačte %s pre ukončenie režimu celej obrazovky"
+msgstr "Stlačte %s na ukončenie režimu celej obrazovky"
 
 #: embed/ephy-embed.c:566
 msgid "ESC"
@@ -2040,7 +2040,7 @@ msgstr "Obrázky"
 #: src/resources/gtk/action-bar-end.blp:10 src/resources/gtk/action-bar.blp:83
 #: src/resources/gtk/prefs-general-page.blp:112
 msgid "Downloads"
-msgstr "Sťahovania"
+msgstr "Stiahnuté"
 
 #. If we don't have XDG user dirs info, return an educated guess.
 #: lib/ephy-file-helpers.c:176 lib/ephy-file-helpers.c:192
@@ -2816,9 +2816,9 @@ msgid "GNOME Web prevented %u tracker from following you across websites"
 msgid_plural ""
 "GNOME Web prevented %u trackers from following you across websites"
 msgstr[0] ""
-"GNOME Web zabránil %u sledovaču sledovať vás na rôznych webových stránkach"
-msgstr[1] ""
 "GNOME Web zabránil %u sledovačom sledovať vás na rôznych webových stránkach"
+msgstr[1] ""
+"GNOME Web zabránil %u sledovaču sledovať vás na rôznych webových stránkach"
 msgstr[2] ""
 "GNOME Web zabránil %u sledovačom sledovať vás na rôznych webových stránkach"
 
@@ -3401,11 +3401,11 @@ msgstr "Údaje boli vymazané"
 
 #: src/preferences/ephy-prefs-dialog.c:99
 msgid "New search engine"
-msgstr "Nový vyhľadávací nástroj"
+msgstr "Nový vyhľadávač"
 
 #: src/preferences/ephy-search-engine-listbox.c:86
 msgid "A_dd Search Engine"
-msgstr "_Pridať vyhľadávací nástroj"
+msgstr "_Pridať vyhľadávač"
 
 #: src/preferences/ephy-search-engine-row.c:130
 msgid "No search suggestions"
@@ -3463,7 +3463,7 @@ msgstr "Otvoriť súbor (manifest.json/xpi)"
 
 #: src/preferences/prefs-features-page.c:283
 msgid "All values reset"
-msgstr "Vrátiť všetky hodnoty na predvolené"
+msgstr "Všetky hodnoty boli obnovené"
 
 #: src/preferences/prefs-features-page.c:337
 msgid "Reset to default"
@@ -3511,7 +3511,7 @@ msgstr "Vyžaduje sa názov"
 
 #: src/preferences/prefs-search-engine-page.c:150
 msgid "This search engine already exists"
-msgstr "Tento vyhľadávací nástroj už existuje"
+msgstr "Tento vyhľadávač už existuje"
 
 #: src/preferences/prefs-search-engine-page.c:194
 #, c-format
@@ -3727,7 +3727,7 @@ msgstr "Hotovo"
 
 #: src/resources/gtk/bookmarks-dialog.blp:33
 msgid "Close"
-msgstr "_Zavrieť"
+msgstr "Zavrieť"
 
 #: src/resources/gtk/bookmarks-dialog.blp:40 src/resources/gtk/data-view.blp:18
 msgid "Options"
@@ -3857,8 +3857,8 @@ msgid ""
 "Firefox on other computers. GNOME Web is not Firefox and is not produced or "
 "endorsed by Mozilla."
 msgstr ""
-"Prihláste sa pomocou svojho účtu Mozilla a synchronizujte svoje údaje s GNOME "
-"Web a Firefoxom na iných počítačoch. GNOME Web nie je Firefox a nie je "
+"Prihláste sa pomocou svojho účtu Mozilla a synchronizujte svoje údaje s "
+"GNOME Web a Firefoxom na iných počítačoch. GNOME Web nie je Firefox a nie je "
 "vyvinutý ani podporovaný spoločnosťou Mozilla."
 
 #: src/resources/gtk/firefox-sync-dialog.blp:43
@@ -3976,11 +3976,11 @@ msgstr "_Stlmiť kartu"
 
 #: src/resources/gtk/notebook-context-menu.blp:42
 msgid "Close Tabs to the _Left"
-msgstr "Zavrieť karty na _ľavo"
+msgstr "Zavrieť karty na_ľavo"
 
 #: src/resources/gtk/notebook-context-menu.blp:47
 msgid "Close Tabs to the _Right"
-msgstr "Zavrieť karty na _pravo"
+msgstr "Zavrieť karty na_pravo"
 
 #: src/resources/gtk/notebook-context-menu.blp:52
 msgid "Close _Other Tabs"
@@ -3992,7 +3992,7 @@ msgstr "_Zavrieť"
 
 #: src/resources/gtk/page-menu-button.blp:7
 msgid "Main Menu"
-msgstr "Hlavné menu"
+msgstr "Hlavná ponuka"
 
 #. Translators: 'Run in Background' item is a toggle, not an action
 #: src/resources/gtk/page-menu-button.blp:15
