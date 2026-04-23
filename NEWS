@@ -1,3 +1,29 @@
+50.4 - April 23, 2026
+=====================
+
+* Bugs fixed:
+  - #2851 No way to "not" quit a webapp through keyboard shortcuts when "Run in
+    background" is enabled (ARAKHNID)
+  - #2857 adw_tab_view_get_page: assertion 'child_belongs_to_this_view (self,
+    child)' failed (Michael Catanzaro)
+  - #2858 Crash when passing invalid command line option (Michael Catanzaro)
+  - #2859 URLs containing various characters cannot be deleted from history
+    (Michael Catanzaro)
+  - #2862 ephy_site_menu_button_update_search_engine_item crash on 32 bit
+    (Michael Catanzaro)
+  - #2863 Epiphany 49.7 crashes at launch (Michael Catanzaro)
+  - !2073 Fix failure to delete URLs from history (Michael Catanzaro)
+  - !2076 shell: keep going until all windows are destroyed (Michael Catanzaro)
+  - !2083 Fix more problems in the filters manager, including crash on startup
+    (Michael Catanzaro)
+
+* Translation updates:
+  - Dutch (Reinout van Schouwen)
+  - German (Christian Kirbach)
+  - Polish (Victoria Niedzielska)
+  - Slovak (Jose Riha)
+  - Turkish (Emin Tufan Çetin)
+
 50.3 - March 24, 2026
 =====================
 
