@@ -4747,7 +4747,7 @@ ephy_window_init (EphyWindow *window)
   gtk_window_group_add_window (window_group, GTK_WINDOW (window));
   ephy_shell_register_window (shell, window);
 
-#if TECH_PREVIEW
+#if TECH_PREVIEW || CANARY
   gtk_widget_add_css_class (GTK_WIDGET (window), "devel");
 #endif
 }
